@@ -1,0 +1,27 @@
+# Ambiente virtual
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Dados (grandes; não vão para o Git)
+dados/*
+!dados/data.yaml
+
+# Saídas do YOLO (treino, pesos, logs)
+runs/
+*.pt
+
+# Resultados gerados
+resultados/
+
+# Sistema e editor
+.DS_Store
+.vscode/
+.idea/
+
+# PKLot e arquivos compactados
+pklot/
+*.zip
