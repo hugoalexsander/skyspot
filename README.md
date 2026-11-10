@@ -48,8 +48,13 @@ invoke validar --pesos runs/detect/pklot/weights/best.pt
 invoke pklot
 invoke avaliar --pesos runs/detect/pklot/weights/best.pt
 
-# 5. Detecte vagas em uma imagem
-invoke detectar --imagem img.jpg --pesos runs/detect/pklot/weights/best.pt
+# 5. Melhor treino atual: PKLot completo + ACPDS (sem pseudo CARPK)
+invoke preparar-pklot-acpds
+invoke treinar-pklot-acpds
+# pesos: runs/detect/pklot_acpds/weights/best.pt  (YOLOv8s, imgsz 960)
+
+# 6. Detecte vagas (auto aplica filtros anti-FP)
+invoke detectar --imagem img.jpg --pesos runs/detect/pklot_acpds/weights/best.pt --modo auto
 ```
 
 O caminho dos pesos aparece no fim do treino. A imagem anotada é salva em `resultados/`: verde = livre, vermelho = ocupada.
@@ -60,10 +65,10 @@ No Windows, use `\` nos caminhos se necessário. No Linux, use `python3` se `pyt
 
 | Métrica | Valor |
 |---|---|
-| mAP@0,5 | |
-| Precisão, revocação e F1 (livre) | |
-| Precisão, revocação e F1 (ocupada) | |
-| FPS | |
+| mAP@0,5 (treino combinado v2) | ~0,98–0,99 |
+| Precisão, revocação e F1 (livre, PKLot 20 imgs, v2) | 93% / 100% / 0,96 |
+| Precisão, revocação e F1 (ocupada) | 99% / 100% / 1,00 |
+| FPS | ~9 |
 
 ## Limitações
 
