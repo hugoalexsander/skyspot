@@ -10,9 +10,23 @@ __pycache__/
 dados/*
 !dados/data.yaml
 
-# Saídas do YOLO (treino, pesos, logs)
+# Datasets e downloads
+pklot/
+pklot_acpds/
+combinado/
+combinado_v3/
+carpk_dl/
+acpds_dl/
+outros_datasets/
+anotacao/carpk_livres/
+*.zip
+*.tar
+*.cache
+
+# Pesos e saídas do YOLO
 runs/
 *.pt
+yolov8*.pt
 
 # Resultados gerados
 resultados/
@@ -21,7 +35,4 @@ resultados/
 .DS_Store
 .vscode/
 .idea/
-
-# PKLot e arquivos compactados
-pklot/
-*.zip
+_tmp*.py
